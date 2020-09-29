@@ -9,7 +9,6 @@ perfectly in parse English pdf files.
 
 # Run
 python main.py <file_path>
-
 <br/>#python main.py './White Paper'
 
 # Result 
