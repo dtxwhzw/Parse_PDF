@@ -1,5 +1,6 @@
 import os
 import sys
+from tqdm import tqdm
 
 from pdfminer.pdfparser import  PDFParser,PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -24,7 +25,7 @@ def get_white_paper(file_path):
 
 
 def main(file_path,file_list):
-    for file in file_list:
+    for file in tqdm(file_list):
         pdf = open(file_path + '/' + file,'rb')
         parse = PDFParser(pdf)
         doc = PDFDocument()
