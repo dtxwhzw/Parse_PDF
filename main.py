@@ -6,7 +6,6 @@ from pdfminer.pdfparser import  PDFParser,PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
 from pdfminer.layout import LTTextBoxHorizontal,LAParams
-from pdfminer.pdfinterp import PDFTextExtractionNotAllowed
 
 
 def get_white_paper(file_path):
