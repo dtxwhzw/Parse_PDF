@@ -1,4 +1,5 @@
 import os
+import sys
 
 from pdfminer.pdfparser import  PDFParser,PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -22,18 +23,18 @@ def get_white_paper(file_path):
     return white_paper
 
 
-def main(file_list):
+def main(file_path,file_list):
     for file in file_list:
-        pdf = open('./White Paper/'+file,'rb')
+        pdf = open(file_path + '/' + file,'rb')
         parse = PDFParser(pdf)
         doc = PDFDocument()
-        device = PDFPageAggregator(rsrcmgr, laparams=laparams)
         parse.set_document(doc)
         doc.set_parser(parse)
         # create PDF, explorer to share data
         rsrcmgr = PDFResourceManager()
         # create a PDF object
         laparams = LAParams()
+        device = PDFPageAggregator(rsrcmgr, laparams=laparams)
         # create a PDF interpreter object
         interpreter = PDFPageInterpreter(rsrcmgr, device)
         for page in doc.get_pages() :
@@ -41,13 +42,14 @@ def main(file_list):
             layout = device.get_result()
             for x in layout :
                 if (isinstance(x, LTTextBoxHorizontal)) :
-                    with open('./resulu/'+file+'.txt', 'a') as f :
+                    with open('./result/'+file+'.txt', 'a') as f :
                         results = x.get_text()
                         #print(results)
                         f.write(results + "\n")
 
 
 if __name__ == "__main__":
-    file_path = './White Paper'
+    file_path = sys.argv[1]
+    #file_path = './White Paper'
     files = get_white_paper(file_path)
-    main(files)
+    main(file_path,files)
