@@ -1,8 +1,7 @@
 # Parse_PDF
 example of parse pdf project for uq industrial capstone project
-<br/> This project uses the pdfminer repository, and work 
-perfectly in parse English pdf files.
-
+<br/> This project uses the pdfminer repository to parse pdf files, and i've download two security white paper from https://csrc.nist.gov/publications/white-paper,
+and it works well.
 # Requirements
 - python3
 - pip install -r requirement.txt
